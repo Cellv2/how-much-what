@@ -1,0 +1,5 @@
+{
+    "trailingComma": "es5",
+    "tailwindStylesheet": "./src/index.css",
+    "plugins": ["prettier-plugin-tailwindcss"]
+}
