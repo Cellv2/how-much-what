@@ -71,3 +71,7 @@ export default defineConfig([
     },
 ]);
 ```
+## Design
+
+### Desktop (1024px)
+![Desktop Wireframe](design/wireframes/desktop_1024.png)
