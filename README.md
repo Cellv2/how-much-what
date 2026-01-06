@@ -71,7 +71,18 @@ export default defineConfig([
     },
 ]);
 ```
+
 ## Design
 
 ### Desktop (1024px)
+
 ![Desktop Wireframe](design/wireframes/desktop_1024.png)
+
+### Tablet (768px)
+
+![Tablet Wireframe](design/wireframes/tablet_768.png)
+
+### Mobile (375px)
+
+![Mobil Wireframe](design/wireframes/mobile_375.png)
+![Mobile Wireframe Expanded](design/wireframes/mobile_375_expanded.png)
