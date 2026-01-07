@@ -1,16 +1,35 @@
 import { composeStories } from "@storybook/react-vite";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import * as stories from "./SummaryCard.stories";
 
-const { DefaultSummaryCard } = composeStories(stories);
+const { DefaultSummaryCard, SummaryCardWithZeroValue } =
+    composeStories(stories);
 
-describe("DefaultSummaryCard", () => {
-    it("should fail", () => {
+describe("DefaultSummaryCard story", () => {
+    it("should show the correct label", () => {
         render(<DefaultSummaryCard />);
 
-        expect(true).toBe(false);
+        const element = screen.getByText("DefaultLabel");
+
+        expect(element).toBeInTheDocument();
     });
 
-    it("should show the correct point value amount passed in", () => {});
+    it("should show the correct point value amount passed in", () => {
+        render(<DefaultSummaryCard />);
+
+        const element = screen.getByText("1500");
+
+        expect(element).toBeInTheDocument();
+    });
+});
+
+describe("SummaryCardWithZeroValue story", () => {
+    it("should render without issue with a 0 value", () => {
+        render(<SummaryCardWithZeroValue />);
+
+        const element = screen.getByText("0");
+
+        expect(element).toBeInTheDocument();
+    });
 });
