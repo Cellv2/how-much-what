@@ -7,5 +7,17 @@ export type BattlegroundMarkSummaryCardProps = {
 export const BattlegroundMarkSummaryCard = (
     props: BattlegroundMarkSummaryCardProps
 ) => {
-    return <div>BattlegroundMarkSummaryCard</div>;
+    const marksElements = Object.entries(props.requiredBattlegroundMarks).map(
+        (objEntry) => {
+            const [key, value] = objEntry;
+
+            return (
+                <span key={key}>
+                    {key}: {value}
+                </span>
+            );
+        }
+    );
+
+    return <div>{marksElements}</div>;
 };

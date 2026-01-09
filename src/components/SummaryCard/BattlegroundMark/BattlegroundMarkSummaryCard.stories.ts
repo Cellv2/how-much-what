@@ -13,8 +13,35 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultBattlegroundMarkSummaryCard: Story = {};
+export const DefaultBattlegroundMarkSummaryCard: Story = {
+    args: {
+        requiredBattlegroundMarks: {
+            AB: 0,
+            AV: 0,
+            EotS: 0,
+            WSG: 0,
+        },
+    },
+};
 
-export const BattlegroundMarkSummaryCardWithOneMark: Story = {};
+export const BattlegroundMarkSummaryCardWithOneMark: Story = {
+    args: {
+        requiredBattlegroundMarks: {
+            AB: 5,
+            AV: 0,
+            EotS: 0,
+            WSG: 0,
+        },
+    },
+};
 
-export const BattlegroundMarkSummaryCardWithAllMarks: Story = {};
+export const BattlegroundMarkSummaryCardWithAllMarks: Story = {
+    args: {
+        requiredBattlegroundMarks: {
+            AB: 5,
+            AV: 10,
+            EotS: 20,
+            WSG: 5,
+        },
+    },
+};
