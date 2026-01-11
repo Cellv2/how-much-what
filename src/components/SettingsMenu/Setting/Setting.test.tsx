@@ -7,25 +7,7 @@ import { userEvent } from "@testing-library/user-event";
 
 const { ActiveSetting, InactiveSetting } = composeStories(stories);
 
-describe("Smoke tests", () => {
-    it("ActiveSetting renders with aria-selected=true", () => {
-        render(<ActiveSetting />);
-        const element = screen.getByRole("tab", { name: "Active setting" });
-
-        expect(element).toHaveAttribute("aria-selected", "true");
-        expect(element).toHaveAccessibleName("Active setting");
-    });
-
-    it("InactiveSetting renders with aria-selected=false", () => {
-        render(<InactiveSetting />);
-        const element = screen.getByRole("tab", { name: "Inactive setting" });
-
-        expect(element).toHaveAttribute("aria-selected", "false");
-        expect(element).toHaveAccessibleName("Inactive setting");
-    });
-});
-
-describe("Behaviour tests", () => {
+describe("[Behaviour] Setting tests", () => {
     it("should be focusable", () => {
         render(
             <Setting label="setting 1" active={false} onSelect={() => {}} />
@@ -72,5 +54,23 @@ describe("Behaviour tests", () => {
         fireEvent.click(screen.getByRole("tab", { name: "setting 1" }));
 
         expect(mockOnSelect).toHaveBeenCalledTimes(1);
+    });
+});
+
+describe("[Smoke] Setting stories", () => {
+    it("ActiveSetting renders with aria-selected=true", () => {
+        render(<ActiveSetting />);
+        const element = screen.getByRole("tab", { name: "Active setting" });
+
+        expect(element).toHaveAttribute("aria-selected", "true");
+        expect(element).toHaveAccessibleName("Active setting");
+    });
+
+    it("InactiveSetting renders with aria-selected=false", () => {
+        render(<InactiveSetting />);
+        const element = screen.getByRole("tab", { name: "Inactive setting" });
+
+        expect(element).toHaveAttribute("aria-selected", "false");
+        expect(element).toHaveAccessibleName("Inactive setting");
     });
 });
