@@ -6,5 +6,5 @@ export const CURRENCY_FILTER = {
     BOTH: { id: "BOTH", name: "Both" },
 } as const satisfies Record<string, NamedEntity>;
 
-export type CURRENCY_FILTER_ID = keyof typeof CURRENCY_FILTER;
-export type CurrencyFilter = (typeof CURRENCY_FILTER)[CURRENCY_FILTER_ID];
+export type CurrencyFilterId = keyof typeof CURRENCY_FILTER;
+export type CurrencyFilter = (typeof CURRENCY_FILTER)[CurrencyFilterId];
