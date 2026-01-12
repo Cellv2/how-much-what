@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { fn } from "storybook/test";
 import { Setting } from "./Setting";
 
 const meta = {
@@ -7,6 +8,9 @@ const meta = {
     tags: ["autodocs"],
     parameters: {
         layout: "fullscreen",
+    },
+    args: {
+        onSelect: fn(),
     },
 } satisfies Meta<typeof Setting>;
 
@@ -17,9 +21,6 @@ export const DefaultSetting: Story = {
     args: {
         active: true,
         label: "setting 1",
-        onSelect: () => {
-            console.log("clicked");
-        },
     },
 };
 
@@ -27,9 +28,6 @@ export const ActiveSetting: Story = {
     args: {
         active: true,
         label: "Active setting",
-        onSelect: () => {
-            console.log("clicked");
-        },
     },
 };
 
@@ -37,8 +35,5 @@ export const InactiveSetting: Story = {
     args: {
         active: false,
         label: "Inactive setting",
-        onSelect: () => {
-            console.log("clicked");
-        },
     },
 };
