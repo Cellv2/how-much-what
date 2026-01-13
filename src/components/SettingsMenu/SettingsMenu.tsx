@@ -2,14 +2,20 @@ import { useState } from "react";
 import { Setting } from "./Setting/Setting";
 import {
     ARENA_SEASON,
+    DEFAULT_SEASON,
     getSeasonIdsForExpansion,
     type ArenaSeasonId,
 } from "../../models/season";
 import {
     CURRENCY_FILTER,
+    DEFAULT_CURRENCY_FILTER,
     type CurrencyFilterId,
 } from "../../models/currencyFilter";
-import { EXPANSION, type ExpansionId } from "../../models/expansion";
+import {
+    DEFAULT_EXPANSION,
+    EXPANSION,
+    type ExpansionId,
+} from "../../models/expansion";
 
 export type SettingsMenuProps = {
     initialActive?: string;
@@ -26,22 +32,17 @@ export const SettingsMenu = (props: SettingsMenuProps) => {
         initialActiveSeason,
     } = props;
 
-    // TODO: probs move this into config or some such
-    const defaultExpansion = EXPANSION.TBC;
-    const defaultSeason = ARENA_SEASON.SEASON_1;
-    const defaultCurrencyFilter = CURRENCY_FILTER.BOTH;
-
     const [active, setActive] = useState<string | null>(initialActive ?? null);
     const [activeExpansion, setActiveExpansion] = useState(
-        initialActiveExpansion ?? defaultExpansion.id
+        initialActiveExpansion ?? DEFAULT_EXPANSION
     );
 
     const [activeSeason, setActiveSeason] = useState(
-        initialActiveSeason ?? defaultSeason.id
+        initialActiveSeason ?? DEFAULT_SEASON
     );
 
     const [activeCurrencyFilter, setActiveCurrencyFilter] = useState(
-        initialActiveCurrencyFilter ?? defaultCurrencyFilter.id
+        initialActiveCurrencyFilter ?? DEFAULT_CURRENCY_FILTER
     );
 
     const options = ["setting 1", "setting 2"];

@@ -1,5 +1,6 @@
 import type { NamedEntity } from "../../types/common";
 import type { ExpansionId } from "../expansion";
+import type { ArenaSeasonId } from "./season.types";
 
 export const ARENA_SEASON = {
     SEASON_1: { id: "SEASON_1", name: "S1", expansion: "TBC" },
@@ -11,3 +12,5 @@ export const ARENA_SEASON = {
     SEASON_7: { id: "SEASON_7", name: "S7", expansion: "WOTLK" },
     SEASON_8: { id: "SEASON_8", name: "S8", expansion: "WOTLK" },
 } as const satisfies Record<string, NamedEntity & { expansion: ExpansionId }>;
+
+export const DEFAULT_SEASON: ArenaSeasonId = ARENA_SEASON.SEASON_1.id;
