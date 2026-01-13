@@ -8,7 +8,7 @@ import {
 import {
     CURRENCY_FILTER,
     type CurrencyFilterId,
-} from "../../models/currency-filter";
+} from "../../models/currencyFilter";
 import { EXPANSION, type ExpansionId } from "../../models/expansion";
 
 export type SettingsMenuProps = {
