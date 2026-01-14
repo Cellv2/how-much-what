@@ -5,7 +5,8 @@ import * as stories from "./Setting.stories";
 import { Setting } from "./Setting";
 import { userEvent } from "@testing-library/user-event";
 
-const { ActiveSetting, InactiveSetting } = composeStories(stories);
+const { DefaultSetting, ActiveSetting, InactiveSetting } =
+    composeStories(stories);
 
 describe("[Behaviour] Setting tests", () => {
     it("should be focusable", () => {
@@ -58,8 +59,25 @@ describe("[Behaviour] Setting tests", () => {
 });
 
 describe("[Smoke] Setting stories", () => {
+    it("DefaultSettings renders with role=tab", () => {
+        render(<DefaultSetting />);
+
+        const element = screen.getByRole("tab", { name: "setting 1" });
+
+        expect(element).toHaveAttribute("role", "tab");
+    });
+
+    it("DefaultSetting renders with correct accessible name", () => {
+        render(<DefaultSetting />);
+
+        const element = screen.getByRole("tab");
+
+        expect(element).toHaveAccessibleName("setting 1");
+    });
+
     it("ActiveSetting renders with aria-selected=true", () => {
         render(<ActiveSetting />);
+
         const element = screen.getByRole("tab", { name: "Active setting" });
 
         expect(element).toHaveAttribute("aria-selected", "true");

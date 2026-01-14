@@ -18,7 +18,6 @@ import {
 } from "../../models/expansion";
 
 export type SettingsMenuProps = {
-    initialActive?: string;
     initialActiveCurrencyFilter?: CurrencyFilterId;
     initialActiveExpansion?: ExpansionId;
     initialActiveSeason?: ArenaSeasonId;
@@ -26,13 +25,11 @@ export type SettingsMenuProps = {
 
 export const SettingsMenu = (props: SettingsMenuProps) => {
     const {
-        initialActive,
         initialActiveCurrencyFilter,
         initialActiveExpansion,
         initialActiveSeason,
     } = props;
 
-    const [active, setActive] = useState<string | null>(initialActive ?? null);
     const [activeExpansion, setActiveExpansion] = useState(
         initialActiveExpansion ?? DEFAULT_EXPANSION
     );
@@ -45,7 +42,6 @@ export const SettingsMenu = (props: SettingsMenuProps) => {
         initialActiveCurrencyFilter ?? DEFAULT_CURRENCY_FILTER
     );
 
-    const options = ["setting 1", "setting 2"];
     const expansionOptions = [EXPANSION.CLASSIC.id, EXPANSION.TBC.id];
     const seasonOptions = getSeasonIdsForExpansion(activeExpansion);
     const currencyFilterOptions = [
@@ -56,18 +52,6 @@ export const SettingsMenu = (props: SettingsMenuProps) => {
 
     return (
         <>
-            <div role="tablist">
-                {options.map((option) => (
-                    <Setting
-                        key={option}
-                        label={option}
-                        active={active === option}
-                        onSelect={() => {
-                            setActive(option);
-                        }}
-                    />
-                ))}
-            </div>
             <div role="tablist" aria-label="expansion-selector">
                 {expansionOptions.map((id) => (
                     <Setting

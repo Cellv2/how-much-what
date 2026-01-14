@@ -13,13 +13,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultSettingsMenu: Story = {
-    args: { initialActive: "setting 1" },
-};
+export const DefaultSettingsMenu: Story = {};
 
-export const PreselectedSetting: Story = {
+export const PreselectedSettingMenu: Story = {
     args: {
-        initialActive: "setting 2",
         initialActiveCurrencyFilter: "ARENA",
         initialActiveExpansion: "TBC",
         initialActiveSeason: "SEASON_4",
