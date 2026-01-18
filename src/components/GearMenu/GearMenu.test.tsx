@@ -1,11 +1,25 @@
-import { describe, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { getGearSlotNames } from "../../models/gearSlot";
+import { GearMenu } from "./GearMenu";
 
 describe("[Behaviour] GearMenu component", () => {
-    it("should render each expected gear slot", () => {});
+    it("should render each expected gear slot", () => {
+        render(<GearMenu />);
+
+        const slots = getGearSlotNames();
+
+        for (const slot of slots) {
+            const element = screen.getByText(slot);
+            expect(element).toBeInTheDocument();
+        }
+    });
 
     it("should render slots in the correct order", () => {});
 
     it("should display gear slot labels with the correct text", () => {});
+
+    it("should highlight the correct default slot", () => {});
 });
 
 describe("[Smoke] GearMenu stories", () => {
