@@ -15,7 +15,20 @@ describe("[Behaviour] GearMenu component", () => {
         }
     });
 
-    it("should render slots in the correct order", () => {});
+    it("should render slots in the correct order", () => {
+        render(<GearMenu />);
+
+        const expected = getGearSlotNames();
+
+        const container = screen.getByRole("list", {
+            name: "gearSlot-selector",
+        });
+        const childArr = Array.from(container.children);
+
+        const actual = childArr.map((item) => item.textContent);
+
+        expect(actual).toEqual(expected);
+    });
 
     it("should display gear slot labels with the correct text", () => {});
 

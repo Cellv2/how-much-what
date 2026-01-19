@@ -25,6 +25,6 @@ describe("getGearSlotNames", () => {
 
         const result = getGearSlotNames();
 
-        expect(result).toEqual(expected);
+        expect(result).toMatchObject(expected);
     });
 });
