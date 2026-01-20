@@ -1,11 +1,12 @@
-import { getGearSlotNames } from "../../models/gearSlot";
+import { GEAR_SLOT, getGearSlotIds } from "../../models/gearSlot";
 
 export const GearMenu = () => {
-    const slotNames = getGearSlotNames();
-    const menuSlots = slotNames.map((slot) => {
+    const slotIds = getGearSlotIds();
+    const menuSlots = slotIds.map((slotId) => {
+        const slotLabel = GEAR_SLOT[slotId].name;
         return (
-            <li role="listitem" key={slot}>
-                {slot}
+            <li role="listitem" key={slotId}>
+                {slotLabel}
             </li>
         );
     });

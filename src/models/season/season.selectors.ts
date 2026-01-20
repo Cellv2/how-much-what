@@ -1,5 +1,6 @@
 import type { ExpansionId } from "../expansion";
 import { ARENA_SEASON } from "./season.data";
+import type { ArenaSeasonId, ArenaSeasonName } from "./season.types";
 
 export const getSeasonsForExpansion = (expansion: ExpansionId) => {
     return Object.values(ARENA_SEASON).filter(
@@ -7,8 +8,10 @@ export const getSeasonsForExpansion = (expansion: ExpansionId) => {
     );
 };
 
-export const getSeasonIdsForExpansion = (expansion: ExpansionId) =>
-    getSeasonsForExpansion(expansion).map((s) => s.id);
+export const getSeasonIdsForExpansion = (
+    expansion: ExpansionId
+): ArenaSeasonId[] => getSeasonsForExpansion(expansion).map((s) => s.id);
 
-export const getSeasonNamesForExpansion = (expansion: ExpansionId) =>
-    getSeasonsForExpansion(expansion).map((s) => s.name);
+export const getSeasonNamesForExpansion = (
+    expansion: ExpansionId
+): ArenaSeasonName[] => getSeasonsForExpansion(expansion).map((s) => s.name);
