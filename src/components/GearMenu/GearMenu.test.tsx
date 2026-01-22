@@ -29,10 +29,10 @@ describe("[Behaviour] GearMenu component", () => {
 
         const expected = getGearSlotNames();
 
-        const container = screen.getByRole("list", {
+        const list = screen.getByRole("listbox", {
             name: "gearSlot-selector",
         });
-        const childArr = Array.from(container.children);
+        const childArr = Array.from(list.children);
 
         const actual = childArr.map((item) => item.textContent);
 
@@ -44,7 +44,7 @@ describe("[Behaviour] GearMenu component", () => {
 
         const defaultSlotLabel = GEAR_SLOT[DEFAULT_GEAR_SLOT].name;
 
-        const list = screen.getByRole("list", { name: "gearSlot-selector" });
+        const list = screen.getByRole("listbox", { name: "gearSlot-selector" });
         const defaultSlot = within(list).getByText(defaultSlotLabel);
 
         expect(list).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe("[Behaviour] GearMenu component", () => {
     it("should activate the correct gear slot when clicked", () => {
         render(<GearMenu />);
 
-        const list = screen.getByRole("list", { name: "gearSlot-selector" });
+        const list = screen.getByRole("listbox", { name: "gearSlot-selector" });
         const helm = within(list).getByText(GEAR_SLOT.HELM.name);
         const shoulder = within(list).getByText(GEAR_SLOT.SHOULDER.name);
 
@@ -75,7 +75,7 @@ describe("[Smoke] GearMenu stories", () => {
     it("should render the component without crashing", () => {
         render(<DefaultGearMenu />);
 
-        const list = screen.getByRole("list", { name: "gearSlot-selector" });
+        const list = screen.getByRole("listbox", { name: "gearSlot-selector" });
 
         expect(list).toBeInTheDocument();
     });
@@ -83,7 +83,7 @@ describe("[Smoke] GearMenu stories", () => {
     it("should not render any unexpected gear slots", () => {
         render(<DefaultGearMenu />);
 
-        const list = screen.getByRole("list", { name: "gearSlot-selector" });
+        const list = screen.getByRole("listbox", { name: "gearSlot-selector" });
 
         const expectedNames = getGearSlotNames();
         const renderedItems = within(list).getAllByRole("listitem");
@@ -100,7 +100,9 @@ describe("[Smoke] GearMenu stories", () => {
 
         const defaultSlotLabel = GEAR_SLOT[DEFAULT_GEAR_SLOT].name;
 
-        const element = screen.getByRole("list", { name: "gearSlot-selector" });
+        const element = screen.getByRole("listbox", {
+            name: "gearSlot-selector",
+        });
         const defaultSlot = within(element).getByText(defaultSlotLabel);
 
         expect(element).toBeInTheDocument();

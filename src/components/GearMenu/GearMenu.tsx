@@ -28,7 +28,7 @@ export const GearMenu = () => {
     });
 
     return (
-        <ul role="list" aria-label="gearSlot-selector">
+        <ul role="listbox" aria-label="gearSlot-selector">
             {menuSlots}
         </ul>
     );
