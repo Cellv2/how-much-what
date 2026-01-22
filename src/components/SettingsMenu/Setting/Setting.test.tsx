@@ -56,6 +56,22 @@ describe("[Behaviour] Setting tests", () => {
 
         expect(mockOnSelect).toHaveBeenCalledTimes(1);
     });
+
+    it("should rerender correctly when active state is changed", () => {
+        const { rerender } = render(
+            <Setting label="setting 1" active={true} onSelect={() => {}} />
+        );
+
+        let element = screen.getByRole("tab", { name: "setting 1" });
+        expect(element).toHaveAttribute("aria-selected", "true");
+
+        rerender(
+            <Setting label="setting 1" active={false} onSelect={() => {}} />
+        );
+
+        element = screen.getByRole("tab", { name: "setting 1" });
+        expect(element).toHaveAttribute("aria-selected", "false");
+    });
 });
 
 describe("[Smoke] Setting stories", () => {
