@@ -4,8 +4,8 @@ export type SettingProps = {
     onSelect: () => void;
 };
 
-export const Setting = (settings: SettingProps) => {
-    const { active, label, onSelect } = settings;
+export const Setting = (props: SettingProps) => {
+    const { active, label, onSelect } = props;
 
     return (
         <button aria-selected={active} role="tab" onClick={onSelect}>
