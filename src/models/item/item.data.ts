@@ -1,7 +1,7 @@
 import type { ItemEntity } from "./item.types";
 
-export const ITEM = {
-    SEASON_1_HELM: {
+export const ITEMS = [
+    {
         id: "SEASON_1_HELM",
         name: "Helm",
         slotId: "HELM",
@@ -11,7 +11,7 @@ export const ITEM = {
         },
         seasonId: "SEASON_1",
     },
-    SEASON_2_HELM: {
+    {
         id: "SEASON_2_HELM",
         name: "Helm",
         slotId: "HELM",
@@ -21,4 +21,4 @@ export const ITEM = {
         },
         seasonId: "SEASON_2",
     },
-} as const satisfies Record<string, ItemEntity>;
+] as const satisfies ItemEntity[];

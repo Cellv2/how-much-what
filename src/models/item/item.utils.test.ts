@@ -1,33 +1,33 @@
 import { describe, expect, it } from "vitest";
 import type { GearSlotId } from "../gearSlot";
-import { groupItemsBySlot } from "./item.utils";
 import type { ItemEntity } from "./item.types";
+import { groupItemsBySlot } from "./item.utils";
 
 describe("groupItemsBySlot", () => {
     it("groups items by their slotId", () => {
-        const items = {
-            A: {
+        const items = [
+            {
                 id: "A",
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
             } satisfies ItemEntity,
-            B: {
+            {
                 id: "B",
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
                 seasonId: "SEASON_1",
             } satisfies ItemEntity,
-            C: {
+            {
                 id: "C",
                 name: "Offhand C",
                 slotId: "OFFHAND",
                 currency: { id: "ARENA", amount: 300 },
                 seasonId: "SEASON_2",
             } satisfies ItemEntity,
-        };
+        ];
 
         const result = groupItemsBySlot(items);
 
@@ -36,20 +36,21 @@ describe("groupItemsBySlot", () => {
     });
 
     it("returns an empty record when given no items", () => {
-        const result = groupItemsBySlot({});
+        const result = groupItemsBySlot([]);
+
         expect(Object.keys(result)).toHaveLength(0);
     });
 
     it("does not mutate the input object", () => {
-        const items = {
-            A: {
+        const items = [
+            {
                 id: "A",
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
             } satisfies ItemEntity,
-        };
+        ];
 
         const clone = structuredClone(items);
 
@@ -59,15 +60,15 @@ describe("groupItemsBySlot", () => {
     });
 
     it("only creates keys for slots that appear in the input", () => {
-        const items = {
-            A: {
+        const items = [
+            {
                 id: "A",
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
             } satisfies ItemEntity,
-        };
+        ];
 
         const result = groupItemsBySlot(items);
 
@@ -76,22 +77,22 @@ describe("groupItemsBySlot", () => {
     });
 
     it("preserves the original item order within each slot", () => {
-        const items = {
-            A: {
+        const items = [
+            {
                 id: "A",
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
             } satisfies ItemEntity,
-            B: {
+            {
                 id: "B",
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
                 seasonId: "SEASON_1",
             } satisfies ItemEntity,
-        };
+        ];
 
         const result = groupItemsBySlot(items);
 
@@ -119,18 +120,15 @@ describe("groupItemsBySlot", () => {
             "RANGED",
         ];
 
-        const items = Object.fromEntries(
-            allSlots.map((slotId, i) => [
-                `item${String(i)}`,
-                {
-                    id: `item${String(i)}`,
-                    name: `Item ${String(i)}`,
-                    slotId,
-                    currency: { id: "HONOR", amount: 100 },
-                    seasonId: "SEASON_1",
-                } satisfies ItemEntity,
-            ])
-        );
+        const items = allSlots.map((slotId, i) => {
+            return {
+                id: `item${String(i)}`,
+                name: `Item ${String(i)}`,
+                slotId,
+                currency: { id: "HONOR", amount: 100 },
+                seasonId: "SEASON_1",
+            } satisfies ItemEntity;
+        });
 
         const result = groupItemsBySlot(items);
 
