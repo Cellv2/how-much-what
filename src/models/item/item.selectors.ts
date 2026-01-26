@@ -10,5 +10,5 @@ export const getItemsForArenaSeasonId = (
     return Object.values(ITEM).filter((item) => item.seasonId === seasonId);
 };
 
-export const getItemsBuSlot: Record<GearSlotId, ItemEntity[]> =
+export const getItemsBySlot: Record<GearSlotId, ItemEntity[]> =
     groupItemsBySlot(ITEM);
