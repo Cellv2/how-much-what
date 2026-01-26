@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { GearSlotId } from "../gearSlot";
 import { groupItemsBySlot } from "./item.utils";
+import type { ItemEntity } from "./item.types";
 
 describe("groupItemsBySlot", () => {
     it("groups items by their slotId", () => {
@@ -11,21 +12,21 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            },
+            } satisfies ItemEntity,
             B: {
                 id: "B",
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
                 seasonId: "SEASON_1",
-            },
+            } satisfies ItemEntity,
             C: {
                 id: "C",
                 name: "Offhand C",
                 slotId: "OFFHAND",
                 currency: { id: "ARENA", amount: 300 },
                 seasonId: "SEASON_2",
-            },
+            } satisfies ItemEntity,
         };
 
         const result = groupItemsBySlot(items);
@@ -47,7 +48,7 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            },
+            } satisfies ItemEntity,
         };
 
         const clone = structuredClone(items);
@@ -65,7 +66,7 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            },
+            } satisfies ItemEntity,
         };
 
         const result = groupItemsBySlot(items);
@@ -82,14 +83,14 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            },
+            } satisfies ItemEntity,
             B: {
                 id: "B",
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
                 seasonId: "SEASON_1",
-            },
+            } satisfies ItemEntity,
         };
 
         const result = groupItemsBySlot(items);
@@ -120,14 +121,14 @@ describe("groupItemsBySlot", () => {
 
         const items = Object.fromEntries(
             allSlots.map((slotId, i) => [
-                `item${i}`,
+                `item${String(i)}`,
                 {
-                    id: `item${i}`,
-                    name: `Item ${i}`,
+                    id: `item${String(i)}`,
+                    name: `Item ${String(i)}`,
                     slotId,
                     currency: { id: "HONOR", amount: 100 },
                     seasonId: "SEASON_1",
-                },
+                } satisfies ItemEntity,
             ])
         );
 
