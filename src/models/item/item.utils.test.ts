@@ -12,22 +12,22 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity,
+            },
             {
                 id: "B",
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity,
+            },
             {
                 id: "C",
                 name: "Offhand C",
                 slotId: "OFFHAND",
                 currency: { id: "ARENA", amount: 300 },
                 seasonId: "SEASON_2",
-            } satisfies ItemEntity,
-        ];
+            },
+        ] satisfies ItemEntity[];
 
         const result = groupItemsBySlot(items);
 
@@ -49,8 +49,8 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity,
-        ];
+            },
+        ] satisfies ItemEntity[];
 
         const clone = structuredClone(items);
 
@@ -67,8 +67,8 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity,
-        ];
+            },
+        ] satisfies ItemEntity[];
 
         const result = groupItemsBySlot(items);
 
@@ -84,15 +84,15 @@ describe("groupItemsBySlot", () => {
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity,
+            },
             {
                 id: "B",
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity,
-        ];
+            },
+        ] satisfies ItemEntity[];
 
         const result = groupItemsBySlot(items);
 
@@ -127,8 +127,8 @@ describe("groupItemsBySlot", () => {
                 slotId,
                 currency: { id: "HONOR", amount: 100 },
                 seasonId: "SEASON_1",
-            } satisfies ItemEntity;
-        });
+            };
+        }) satisfies ItemEntity[];
 
         const result = groupItemsBySlot(items);
 
