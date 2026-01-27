@@ -1,9 +1,15 @@
 export type ItemProps = {
+    active: boolean;
     label: string;
+    onSelect: () => void;
 };
 
 export const Item = (props: ItemProps) => {
-    const { label } = props;
+    const { active, label, onSelect } = props;
 
-    return <div>{label}</div>;
+    return (
+        <div role="option" aria-selected={active} onClick={onSelect}>
+            {label}
+        </div>
+    );
 };
