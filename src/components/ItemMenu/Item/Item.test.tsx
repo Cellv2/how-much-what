@@ -1,14 +1,23 @@
 import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { Item } from "./Item";
+import { Item, type ItemProps } from "./Item";
 import * as stories from "./Item.stories";
 
 const { DefaultItem } = composeStories(stories);
 
+const defaultProps: ItemProps = {
+    active: false,
+    label: "test",
+    onSelect: vi.fn(),
+};
+
+const renderItemComponent = (props?: Partial<ItemProps>) =>
+    render(<Item {...defaultProps} {...props} />);
+
 describe("[Behaviour] Item component", () => {
     it("should have the correct label", () => {
-        render(<Item active={false} label="test" onSelect={() => {}} />);
+        renderItemComponent();
 
         const item = screen.getByRole("option");
 
@@ -17,7 +26,7 @@ describe("[Behaviour] Item component", () => {
 
     it("should call the onSelect function when clicked", () => {
         const mockOnSelect = vi.fn();
-        render(<Item active={false} label="test" onSelect={mockOnSelect} />);
+        renderItemComponent({ onSelect: mockOnSelect });
 
         const item = screen.getByRole("option");
 
@@ -27,7 +36,7 @@ describe("[Behaviour] Item component", () => {
     });
 
     it("should render with the correct aria roles", () => {
-        render(<Item active={false} label="test" onSelect={() => {}} />);
+        renderItemComponent();
 
         const item = screen.getByText("test");
 
@@ -35,7 +44,7 @@ describe("[Behaviour] Item component", () => {
     });
 
     it("should have the correct aria attributes when active", () => {
-        render(<Item active={true} label="test" onSelect={() => {}} />);
+        renderItemComponent({ active: true });
 
         const option = screen.getByRole("option");
 
@@ -43,14 +52,12 @@ describe("[Behaviour] Item component", () => {
     });
 
     it("should rerender correctly when active state is changed", () => {
-        const { rerender } = render(
-            <Item active={false} label="test" onSelect={() => {}} />
-        );
+        const { rerender } = renderItemComponent({ active: false });
 
         let option = screen.getByRole("option");
         expect(option).toHaveAttribute("aria-selected", "false");
 
-        rerender(<Item active={true} label="test" onSelect={() => {}} />);
+        rerender(<Item {...defaultProps} active={true} />);
 
         option = screen.getByRole("option");
         expect(option).toHaveAttribute("aria-selected", "true");
