@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { Item, type ItemProps } from "./Item";
 import * as stories from "./Item.stories";
 
-const { DefaultItem } = composeStories(stories);
+const { DefaultItem, ActiveItem, InactiveItem } = composeStories(stories);
 
 const defaultProps: ItemProps = {
     active: false,
@@ -68,16 +68,25 @@ describe("[Smoke] Item stories", () => {
     it("DefaultItem should not crash when rendered", () => {
         render(<DefaultItem />);
 
-        const item = screen.getByText("DefaultItem");
+        const item = screen.getByRole("option");
 
         expect(item).toBeInTheDocument();
+        expect(item).toHaveTextContent("DefaultItem");
     });
 
-    it("DefaultItem should render with the correct props", () => {
-        render(<DefaultItem />);
+    it("ActiveItem should render with aria-selected=true", () => {
+        render(<ActiveItem />);
 
-        const item = screen.getByText("DefaultItem");
+        const item = screen.getByRole("option");
 
-        expect(item).toBeInTheDocument();
+        expect(item).toHaveAttribute("aria-selected", "true");
+    });
+
+    it("InactiveItem should render with aria-selected=false", () => {
+        render(<InactiveItem />);
+
+        const item = screen.getByRole("option");
+
+        expect(item).toHaveAttribute("aria-selected", "false");
     });
 });
