@@ -1,8 +1,9 @@
 import { composeStories } from "@storybook/react-vite";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { Item, type ItemProps } from "./Item";
 import * as stories from "./Item.stories";
+import type { ItemEntity } from "../../../models/item";
 
 const { DefaultItem, ActiveItem, InactiveItem } = composeStories(stories);
 
@@ -10,6 +11,16 @@ const defaultProps: ItemProps = {
     active: false,
     label: "test",
     onSelect: vi.fn(),
+    item: {
+        currency: {
+            amount: 500,
+            id: "HONOR",
+        },
+        id: "defaultPropsItem",
+        name: "Default Props Item",
+        seasonId: "SEASON_1",
+        slotId: "HELM",
+    },
 };
 
 const renderItemComponent = (props?: Partial<ItemProps>) =>
@@ -39,8 +50,9 @@ describe("[Behaviour] Item component", () => {
         renderItemComponent();
 
         const item = screen.getByText("test");
+        const itemParent = item.parentElement;
 
-        expect(item).toHaveAttribute("role", "option");
+        expect(itemParent).toHaveAttribute("role", "option");
     });
 
     it("should have the correct aria attributes when active", () => {
@@ -61,6 +73,19 @@ describe("[Behaviour] Item component", () => {
 
         option = screen.getByRole("option");
         expect(option).toHaveAttribute("aria-selected", "true");
+    });
+
+    it("should show the correct currency value", () => {
+        const item: ItemEntity = {
+            ...defaultProps.item,
+            currency: { amount: 1500, id: "HONOR" },
+        };
+        renderItemComponent({ item });
+
+        const option = screen.getByRole("option");
+        const currencyValue = within(option).getByText("1500");
+
+        expect(currencyValue).toBeInTheDocument();
     });
 });
 

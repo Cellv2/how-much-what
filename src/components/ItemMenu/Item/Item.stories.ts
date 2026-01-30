@@ -12,6 +12,16 @@ const meta = {
     args: {
         active: false,
         onSelect: fn(),
+        item: {
+            currency: {
+                amount: 10,
+                id: "HONOR",
+            },
+            id: "defaultPropsStoryItem",
+            name: "Default Props Story Item",
+            seasonId: "SEASON_1",
+            slotId: "HELM",
+        },
     },
 } satisfies Meta<typeof Item>;
 
