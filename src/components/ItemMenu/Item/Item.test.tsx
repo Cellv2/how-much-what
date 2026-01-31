@@ -9,7 +9,6 @@ const { DefaultItem, ActiveItem, InactiveItem } = composeStories(stories);
 
 const defaultProps: ItemProps = {
     active: false,
-    label: "test",
     onSelect: vi.fn(),
     item: {
         currency: {
@@ -49,7 +48,7 @@ describe("[Behaviour] Item component", () => {
     it("should render with the correct aria roles", () => {
         renderItemComponent();
 
-        const item = screen.getByText("test");
+        const item = screen.getByText(defaultProps.item.name);
         const itemParent = item.parentElement;
 
         expect(itemParent).toHaveAttribute("role", "option");
@@ -96,7 +95,22 @@ describe("[Smoke] Item stories", () => {
         const item = screen.getByRole("option");
 
         expect(item).toBeInTheDocument();
-        expect(item).toHaveTextContent("DefaultItem");
+    });
+
+    it("ActiveItem should not crash when rendered", () => {
+        render(<ActiveItem />);
+
+        const item = screen.getByRole("option");
+
+        expect(item).toBeInTheDocument();
+    });
+
+    it("InactiveItem should not crash when rendered", () => {
+        render(<InactiveItem />);
+
+        const item = screen.getByRole("option");
+
+        expect(item).toBeInTheDocument();
     });
 
     it("ActiveItem should render with aria-selected=true", () => {

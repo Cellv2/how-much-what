@@ -1,6 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Item } from "./Item";
 import { fn } from "storybook/test";
+import type { ItemEntity } from "../../../models/item";
+import { Item } from "./Item";
+
+const defaultItem = {
+    currency: {
+        amount: 10,
+        id: "HONOR",
+    },
+    id: "defaultPropsStoryItem",
+    name: "DefaultItem",
+    seasonId: "SEASON_1",
+    slotId: "HELM",
+} satisfies ItemEntity;
 
 const meta = {
     title: "Components/ItemMenu/Item",
@@ -12,37 +24,30 @@ const meta = {
     args: {
         active: false,
         onSelect: fn(),
-        item: {
-            currency: {
-                amount: 10,
-                id: "HONOR",
-            },
-            id: "defaultPropsStoryItem",
-            name: "Default Props Story Item",
-            seasonId: "SEASON_1",
-            slotId: "HELM",
-        },
+        item: defaultItem,
     },
 } satisfies Meta<typeof Item>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultItem: Story = {
-    args: {
-        label: "DefaultItem",
-    },
-};
+export const DefaultItem: Story = {};
 
 export const ActiveItem: Story = {
     args: {
         active: true,
-        label: "ActiveItem",
+        item: {
+            ...defaultItem,
+            name: "ActiveItem",
+        },
     },
 };
 
 export const InactiveItem: Story = {
     args: {
-        label: "InactiveItem",
+        item: {
+            ...defaultItem,
+            name: "InactiveItem",
+        },
     },
 };
