@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { Item, type ItemProps } from "./Item";
 import * as stories from "./Item.stories";
 import type { ItemEntity } from "../../../models/item";
+import { CURRENCY, type CurrencyId } from "../../../models/currency";
 
 const { DefaultItem, ActiveItem, InactiveItem } = composeStories(stories);
 
@@ -72,6 +73,24 @@ describe("[Behaviour] Item component", () => {
 
         option = screen.getByRole("option");
         expect(option).toHaveAttribute("aria-selected", "true");
+    });
+
+    it("should show the correct currency name for the type", () => {
+        const currencyId: CurrencyId = "ARENA";
+        const currencyName = CURRENCY[currencyId].name;
+
+        renderItemComponent({
+            ...defaultProps,
+            item: {
+                ...defaultProps.item,
+                currency: { amount: 500, id: currencyId },
+            },
+        });
+
+        const option = screen.getByRole("option");
+        const expected = within(option).getByText(currencyName);
+
+        expect(expected).toBeInTheDocument();
     });
 
     it("should show the correct currency value", () => {
