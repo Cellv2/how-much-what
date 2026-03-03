@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BattlegroundMarkSummaryCard } from "./BattlegroundMarkSummaryCard";
 
 const meta = {
-    title: "Components/SummaryCard/BattlegroundMark/BattlegroundMarkSummaryCard",
+    title: "Components/Summary/SummaryCard/BattlegroundMark/BattlegroundMarkSummaryCard",
     component: BattlegroundMarkSummaryCard,
     tags: ["autodocs"],
     parameters: {

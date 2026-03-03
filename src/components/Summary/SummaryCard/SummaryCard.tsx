@@ -6,9 +6,9 @@ export type SummaryCardProps = {
 export const SummaryCard = (props: SummaryCardProps) => {
     const { label, value } = props;
     return (
-        <>
-            <div>{label}</div>
-            <div>{value}</div>
-        </>
+        <article>
+            <span>{label}</span>
+            <span>{value}</span>
+        </article>
     );
 };
