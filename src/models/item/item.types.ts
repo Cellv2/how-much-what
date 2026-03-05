@@ -1,6 +1,5 @@
 import type { NamedEntity } from "../../types/common";
-import type { CurrencyId } from "../currency";
-import type { BattlegroundMarkId } from "../currency/battlegroundMark/battleground-mark.types";
+import type { BattlegroundMarkId, CurrencyId } from "../currency";
 import type { GearSlotId } from "../gearSlot";
 import type { ArenaSeasonId } from "../season";
 

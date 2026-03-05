@@ -1,4 +1,4 @@
-import { getCurrencyById } from "../../../models/currency/currency.selectors";
+import { getCurrencyById } from "../../../models/currency";
 import type { ItemEntity } from "../../../models/item";
 
 export type ItemProps = {

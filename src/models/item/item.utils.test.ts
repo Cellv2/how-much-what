@@ -48,6 +48,7 @@ describe("groupItemsBySlot", () => {
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
+                battlegroundMarks: { AB: 20 },
                 seasonId: "SEASON_1",
             },
         ] satisfies ItemEntity[];
@@ -66,6 +67,7 @@ describe("groupItemsBySlot", () => {
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
+                battlegroundMarks: { EOTS: 10 },
                 seasonId: "SEASON_1",
             },
         ] satisfies ItemEntity[];
@@ -83,6 +85,7 @@ describe("groupItemsBySlot", () => {
                 name: "Helm A",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 100 },
+                battlegroundMarks: { AB: 20 },
                 seasonId: "SEASON_1",
             },
             {
@@ -90,6 +93,7 @@ describe("groupItemsBySlot", () => {
                 name: "Helm B",
                 slotId: "HELM",
                 currency: { id: "HONOR", amount: 200 },
+                battlegroundMarks: { AB: 20 },
                 seasonId: "SEASON_1",
             },
         ] satisfies ItemEntity[];
@@ -126,6 +130,7 @@ describe("groupItemsBySlot", () => {
                 name: `Item ${String(i)}`,
                 slotId,
                 currency: { id: "HONOR", amount: 100 },
+                battlegroundMarks: { EOTS: 40 },
                 seasonId: "SEASON_1",
             };
         }) satisfies ItemEntity[];
