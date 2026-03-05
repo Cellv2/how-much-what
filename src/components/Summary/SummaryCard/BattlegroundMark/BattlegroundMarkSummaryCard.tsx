@@ -1,4 +1,4 @@
-import type { BattlegroundMark } from "./BattlegroundMark.types";
+import type { BattlegroundMark } from "../../../../models/currency/battlegroundMark/battleground-mark.types";
 
 export type BattlegroundMarkSummaryCardProps = {
     requiredBattlegroundMarks: BattlegroundMark;

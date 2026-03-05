@@ -6,6 +6,7 @@ export type SummaryProps = {
     items: ItemEntity[];
 };
 
+// TODO: move this into its own file
 type SummaryValue = { honor: number; badges: number; arena: number };
 const calculateTotalCosts = (items: ItemEntity[]): SummaryValue => {
     const vals = items.reduce<SummaryValue>(
