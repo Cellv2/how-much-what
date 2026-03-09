@@ -18,7 +18,7 @@ export const DefaultBattlegroundMarkSummaryCard: Story = {
         requiredBattlegroundMarks: {
             AB: 0,
             AV: 0,
-            EotS: 0,
+            EOTS: 0,
             WSG: 0,
         },
     },
@@ -29,7 +29,7 @@ export const BattlegroundMarkSummaryCardWithOneMark: Story = {
         requiredBattlegroundMarks: {
             AB: 5,
             AV: 0,
-            EotS: 0,
+            EOTS: 0,
             WSG: 0,
         },
     },
@@ -40,7 +40,7 @@ export const BattlegroundMarkSummaryCardWithAllMarks: Story = {
         requiredBattlegroundMarks: {
             AB: 5,
             AV: 10,
-            EotS: 20,
+            EOTS: 20,
             WSG: 5,
         },
     },

@@ -1,7 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 import type { ArenaSeasonId } from "../season";
 import { ITEMS } from "./item.data";
-import { getItemsForArenaSeasonId } from "./item.selectors";
+import {
+    calculateTotalItemCosts,
+    getItemsForArenaSeasonId,
+} from "./item.selectors";
+import { calculateTotalItemCostsCases } from "./item.selectors.fixtures";
 
 describe("getItemsForArenaSeasonId", () => {
     it("does not mutate the ITEM data", () => {
@@ -30,4 +34,13 @@ describe("getItemsForArenaSeasonId", () => {
 
         expect(result).toEqual([]);
     });
+});
+
+describe("calculateTotalItemCosts", () => {
+    it.for(calculateTotalItemCostsCases)(
+        "calculate(%o) -> %o",
+        ([a, expected]) => {
+            expect(calculateTotalItemCosts(a)).toStrictEqual(expected);
+        }
+    );
 });

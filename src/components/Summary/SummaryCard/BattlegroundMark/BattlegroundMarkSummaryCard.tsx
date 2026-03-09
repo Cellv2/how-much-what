@@ -1,7 +1,7 @@
-import type { BattlegroundMark } from "../../../../models/currency";
+import type { BattlegroundMarkCost } from "../../../../models/currency";
 
 export type BattlegroundMarkSummaryCardProps = {
-    requiredBattlegroundMarks: BattlegroundMark;
+    requiredBattlegroundMarks: Partial<BattlegroundMarkCost>;
 };
 
 export const BattlegroundMarkSummaryCard = (

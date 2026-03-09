@@ -16,7 +16,7 @@ describe("DefaultBattlegroundMarkSummaryCard story", () => {
 
         const ab = screen.getByText("AB: 0");
         const av = screen.getByText("AV: 0");
-        const eots = screen.getByText("EotS: 0");
+        const eots = screen.getByText("EOTS: 0");
         const wsg = screen.getByText("WSG: 0");
 
         expect(ab).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe("BattlegroundMarkSummaryCardWithOneMark story", () => {
 
         const ab = screen.getByText("AB: 5");
         const av = screen.getByText("AV: 0");
-        const eots = screen.getByText("EotS: 0");
+        const eots = screen.getByText("EOTS: 0");
         const wsg = screen.getByText("WSG: 0");
 
         expect(ab).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("BattlegroundMarkSummaryCardWithAllMarks story", () => {
 
         const ab = screen.getByText("AB: 5");
         const av = screen.getByText("AV: 10");
-        const eots = screen.getByText("EotS: 20");
+        const eots = screen.getByText("EOTS: 20");
         const wsg = screen.getByText("WSG: 5");
 
         expect(ab).toBeInTheDocument();

@@ -1,6 +1,6 @@
 import type { NamedEntity } from "../../../types/common";
 
-export type BattlegroundMarkKind = "AB" | "AV" | "EOTS" | "WSG";
+type BattlegroundMarkKind = "AB" | "AV" | "EOTS" | "WSG";
 
 export const BATTLEGROUND_MARK = {
     AB: { id: "AB", name: "Arathi Basin" },

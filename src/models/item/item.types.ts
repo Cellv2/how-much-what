@@ -1,14 +1,20 @@
 import type { NamedEntity } from "../../types/common";
-import type { BattlegroundMarkId, CurrencyId } from "../currency";
+import type { BattlegroundMarkCost, CurrencyId } from "../currency";
 import type { GearSlotId } from "../gearSlot";
 import type { ArenaSeasonId } from "../season";
 
 export type ItemEntity = NamedEntity & {
-    battlegroundMarks?: Partial<Record<BattlegroundMarkId, number>>;
+    battlegroundMarks?: Partial<BattlegroundMarkCost>;
     currency: {
         id: CurrencyId;
         amount: number;
     };
     seasonId: ArenaSeasonId;
     slotId: GearSlotId;
+};
+
+export type ItemCostSummaryValue = {
+    honor: number;
+    badges: BattlegroundMarkCost;
+    arena: number;
 };
