@@ -28,6 +28,21 @@ const fakeArenaItem: ItemEntity = {
     },
 };
 
+const fakeBgMarkItems: ItemEntity[] = [
+    {
+        ...fakeHonorItem,
+        battlegroundMarks: {
+            AB: 5,
+        },
+    },
+    {
+        ...fakeHonorItem,
+        battlegroundMarks: {
+            EOTS: 15,
+        },
+    },
+];
+
 describe("[Behaviour] Summary component", () => {
     it("should show total honor value", () => {
         render(<Summary items={[fakeHonorItem]} />);
@@ -42,7 +57,21 @@ describe("[Behaviour] Summary component", () => {
         expect(within(honorArticle).getByText("12345")).toBeInTheDocument();
     });
 
-    it.todo("should show the correct badge numbers");
+    it("should show the correct badge numbers", () => {
+        render(<Summary items={fakeBgMarkItems} />);
+
+        const articles = screen.getAllByRole("article");
+        const bgArticle = articles.find((article) =>
+            within(article).queryByText(CURRENCY.BATTLEGROUND.name)
+        );
+
+        expectToBeDefined(bgArticle, "bgArticle");
+
+        expect(within(bgArticle).queryByText("AB: 5")).toBeInTheDocument();
+        expect(within(bgArticle).queryByText("AV: 0")).toBeInTheDocument();
+        expect(within(bgArticle).queryByText("EOTS: 15")).toBeInTheDocument();
+        expect(within(bgArticle).queryByText("WSG: 0")).toBeInTheDocument();
+    });
 
     it("should show total arena point value", () => {
         render(<Summary items={[fakeArenaItem]} />);

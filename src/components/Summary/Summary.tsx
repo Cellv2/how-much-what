@@ -21,9 +21,9 @@ export const Summary = (props: SummaryProps) => {
                 label={CURRENCY.HONOR.name}
                 value={summaryValues.honor}
             />
-            {/* TODO: add badges  */}
-            <SummaryCard label="Badges" value={0} />
-            <BattlegroundMarkSummaryCard requiredBattlegroundMarks={{}} />
+            <BattlegroundMarkSummaryCard
+                requiredBattlegroundMarks={summaryValues.badges}
+            />
         </>
     );
 };
